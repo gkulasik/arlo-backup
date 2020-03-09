@@ -1,2 +1,2 @@
 FROM python:3
-RUN pip install arlo
+RUN pip install arlo retry
