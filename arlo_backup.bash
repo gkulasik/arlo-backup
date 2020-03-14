@@ -9,7 +9,7 @@ echo "Creating /videos directory if not exists..."
 mkdir -p videos
 
 echo "Installing needed python packages if not exists..."
-pip install -r ${REQUIREMENTS_FILE};
+pip3 install -r ${REQUIREMENTS_FILE};
 
 echo "Starting python script"
 python3 arlo-backup.py -u $ARLO_USERNAME -p $ARLO_PASSWORD || exit 1
