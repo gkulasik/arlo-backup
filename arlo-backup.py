@@ -67,7 +67,6 @@ try:
     # Get all of the recordings for a date range.
     library = get_library(start, end)
 
-    library = library[:10]  # TODO remove post testing
     videos_total = len(library)
     videos_success = 0
     videos_failure = 0
