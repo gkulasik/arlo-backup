@@ -7,10 +7,12 @@ pipeline {
                     sh 'echo Using python version:'
                     sh 'python3 --version'
 
-                    sh 'echo Pulling latest Arlo Saver code'
+                    sh 'printenv'
+
+                    sh 'echo Pulling latest Arlo Backup code'
                     git url: 'https://github.com/gkulasik/arlo-backup.git/'
 
-                    sh 'echo Starting script...'
+                    sh 'echo Starting bash script...'
                     sh "./arlo_backup.bash"
                 }
             }
