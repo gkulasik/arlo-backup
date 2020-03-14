@@ -10,7 +10,7 @@ pipeline {
                     sh 'printenv'
 
                     sh 'echo Pulling latest Arlo Backup code'
-                    git url: 'https://github.com/gkulasik/arlo-backup.git/'
+                    git url: $GIT_URL
 
                     sh 'echo Starting bash script...'
                     sh "./arlo_backup.bash"
