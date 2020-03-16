@@ -1,7 +1,9 @@
 #!/bin/bash
 set -uo pipefail
 
-date_formatted=$(date +'%Y.%m.%d')
+echo "Curent time: ${date}"
+yesterday=$(date -d "yesterday")
+date_formatted=$(yesterday +'%Y.%m.%d')
 echo "Backup starting for date: $date_formatted"
 
 # Make directory for python script to use
