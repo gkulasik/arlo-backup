@@ -61,8 +61,8 @@ def download_video(recording, video_filename):
 try:
     arlo = Arlo(args["username"], args["password"])
     print(date.today())
-    end = args["date"]  # 'Start'
-    start = (datetime.datetime.strptime(end, '%Y.%m.%d').date() - timedelta(days=args["num_days"])).strftime("%Y%m%d")
+    end = (datetime.datetime.strptime(args["date"], '%Y.%m.%d').date()).strftime("%Y%m%d")  # 'Start'
+    start = (datetime.datetime.strptime(args["date"], '%Y.%m.%d').date() - timedelta(days=args["num_days"])).strftime("%Y%m%d")
 
     print('Starting download of videos from: {}'.format(str(start)))
     print('Ending download of videos at: {}'.format(str(end)))
