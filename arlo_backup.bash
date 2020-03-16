@@ -13,7 +13,7 @@ echo "Installing needed python packages if not exists..."
 pip3 install -r ${REQUIREMENTS_FILE};
 
 echo "Starting python script"
-python3 arlo-backup.py -u $ARLO_USERNAME -p $ARLO_PASSWORD || exit 1
+python3 arlo-backup.py -u $ARLO_USERNAME -p $ARLO_PASSWORD -d date_formatted || exit 1
 
 echo "Starting transfer to ${ARLO_BACKUP_USER}@${ARLO_BACKUP_IP}:${ARLO_BACKUP_DIR_PATH}/${date_formatted}..."
 

@@ -9,7 +9,9 @@ from retry import retry
 ap = argparse.ArgumentParser()
 ap.add_argument('-u', '--username', required=True, help='Username of Arlo account')
 ap.add_argument('-p', '--password', required=True, help='Password of Arlo account')
-ap.add_argument('-d', '--days', required=False, default=0,
+ap.add_argument('-d', '--date', required=False, default=date.today().strftime("%Y.%m.%d"),
+                help='Date to start downloading videos from. Format YYYYMMDD. Default today.')
+ap.add_argument('-n', '--num_days', required=False, default=0,
                 help='Days in the past to download videos for. Default 0 (downloads only for the current day).')
 args = vars(ap.parse_args())
 
@@ -58,8 +60,9 @@ def download_video(recording, video_filename):
 
 try:
     arlo = Arlo(args["username"], args["password"])
-    end = (date.today() - timedelta(days=0)).strftime("%Y%m%d") # Today
-    start = (date.today() - timedelta(days=args["days"])).strftime("%Y%m%d")
+    print(date.today())
+    end = args["date"]  # 'Start'
+    start = (datetime.datetime.strptime(end, '%Y.%m.%d').date() - timedelta(days=args["num_days"])).strftime("%Y%m%d")
 
     print('Starting download of videos from: {}'.format(str(start)))
     print('Ending download of videos at: {}'.format(str(end)))
@@ -71,6 +74,7 @@ try:
     videos_success = 0
     videos_failure = 0
 
+    pdb.set_trace()
     # Arlo breaks up video doorbells from cameras so we recombine them
     devices = get_devices('camera') + get_devices('doorbell')
     device_map = make_device_map(devices)
