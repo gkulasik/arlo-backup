@@ -73,8 +73,7 @@ try:
     videos_total = len(library)
     videos_success = 0
     videos_failure = 0
-
-    pdb.set_trace()
+    
     # Arlo breaks up video doorbells from cameras so we recombine them
     devices = get_devices('camera') + get_devices('doorbell')
     device_map = make_device_map(devices)
