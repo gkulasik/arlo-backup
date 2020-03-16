@@ -60,7 +60,6 @@ def download_video(recording, video_filename):
 
 try:
     arlo = Arlo(args["username"], args["password"])
-    print(date.today())
     end = (datetime.datetime.strptime(args["date"], '%Y.%m.%d').date()).strftime("%Y%m%d")  # 'Start'
     start = (datetime.datetime.strptime(args["date"], '%Y.%m.%d').date() - timedelta(days=args["num_days"])).strftime("%Y%m%d")
 
@@ -73,7 +72,7 @@ try:
     videos_total = len(library)
     videos_success = 0
     videos_failure = 0
-    
+
     # Arlo breaks up video doorbells from cameras so we recombine them
     devices = get_devices('camera') + get_devices('doorbell')
     device_map = make_device_map(devices)
