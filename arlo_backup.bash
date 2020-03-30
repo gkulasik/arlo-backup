@@ -1,7 +1,7 @@
 #!/bin/bash
 set -uo pipefail
 
-echo "Curent time: $(date)"
+echo "Current time: $(date)"
 date_formatted=$(date -d "yesterday" +'%Y.%m.%d')
 echo "Backup starting for date: $date_formatted"
 

@@ -1,4 +1,4 @@
-arlo==1.2.33
+arlo==1.2.34
 retry==0.9.2
 sseclient==0.0.22
 python-dateutil==2.8.1
