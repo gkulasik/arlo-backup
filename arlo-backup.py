@@ -9,6 +9,7 @@ from retry import retry
 ap = argparse.ArgumentParser()
 ap.add_argument('-u', '--username', required=True, help='Username of Arlo account')
 ap.add_argument('-p', '--password', required=True, help='Password of Arlo account')
+ap.add_argument('-c', '--credentials', required=True, help='Path to Gmail credentials for MFA')
 ap.add_argument('-d', '--date', required=False, default=date.today().strftime("%Y.%m.%d"),
                 help='Date to start downloading videos from. Format YYYYMMDD. Default today.')
 ap.add_argument('-n', '--num_days', required=False, default=0,
@@ -59,7 +60,7 @@ def download_video(recording, video_filename):
 
 
 try:
-    arlo = Arlo(args["username"], args["password"])
+    arlo = Arlo(args["username"], args["password"], args["credentials"])
     end = (datetime.datetime.strptime(args["date"], '%Y.%m.%d').date()).strftime("%Y%m%d")  # 'Start'
     start = (datetime.datetime.strptime(args["date"], '%Y.%m.%d').date() - timedelta(days=args["num_days"])).strftime("%Y%m%d")
 
